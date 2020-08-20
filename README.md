@@ -353,3 +353,78 @@ render(){
 
 export default Employees;
 ```
+
+# Hooks
+  + Hooks are new addition to React V16.8
+  + They let you use state and other React features without writing a class
+  + Hooks don't work in classes
+  + Basic Hooks
+  	- useState
+	- useEffect
+	- useContext
+
+## useState
++  useState returns a pair: the current state value and a function that lets you update it
++  value may be integer or string or object
+	+ const [age, setAge] = useState(42);
+	+ const [fruit, setFruit] = useState('banana');
+        + const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+
+Example:
+==========
+
+```import React, { useState } from 'react';  
+  
+function CountApp() {  
+  // Declare a new state variable, which we'll call "count"  
+  
+  const [count, setCount] = useState(0);  
+  
+  return (  
+    <div>  
+      <p>Score : </p>  
+      <button onClick={() => setCount(count + 1)}>  
+       {count} 
+      </button>  
+    </div>  
+  );  
+}  
+export default CountApp; 
+```
+
+## useEffect
+
++ When you call useEffect, you’re telling React to run your “effect” function after flushing changes to the DOM
++ Adds the ability to perform side effects from a function component
++ It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes, but unified into a single API
+
+Example:
+=========
+
+```
+import React, { useState, useEffect } from 'react';
+
+function CountApp() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+export default CountApp;
+```
+
+
+  
